@@ -36,3 +36,26 @@
     transform: rotate(360deg);
   }
 }
+
+.header{
+  color:lightsalmon;
+  background-color:gainsboro;
+  height: 100px;
+}
+
+.body{
+  color:blue;
+  background-color:honeydew;
+  height: 300px;
+}
+
+.footer{
+  color:coral;
+  background-color:lavender;
+  height: 100px;
+}
+
+h1{
+  margin: 0 auto;
+  vertical-align:middle;
+}
