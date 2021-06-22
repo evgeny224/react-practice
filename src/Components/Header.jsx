@@ -1,12 +1,12 @@
 import React from "react";
-import './../App.css';
+import style from "./Header.module.css";
 import logo from "./../images/wolf_logo.png";
 
 const Header = () => {
     return(
-        <header className="header">
+        <header className={style.header} >
             <div>
-                < img src={logo} alt="logo" />
+                < img className={style.img}  src={logo} alt="logo" />
             </div>
         </header>
     )

@@ -1,10 +1,10 @@
 import React from "react";
-import './../App.css';
+import style from "./Profile.module.css";
 import sand from "./../images/sand.jpg";
 
 const Profile = () => {
     return(
-        <div className="content">
+        <div className={style.content}>
             <div>
                 <img src={sand} alt="island" />
             </div>
@@ -13,7 +13,7 @@ const Profile = () => {
                 My posts
                 <div>New post</div>
                 <div>
-                    <div>post 1</div>
+                    <div className={style.item}>post 1</div>
                     <div>post 2</div>
                 </div>
             </div>
