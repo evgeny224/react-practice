@@ -21,24 +21,40 @@ import { NavLink } from "react-router-dom";
             )
         }
 
+        let DialogsData = [ 
+                            {id: 1, name: "Eva"},
+                            {id: 2, name: "Olga"},
+                            {id: 3, name: "Nick"},
+                            {id: 4, name: "Petr"},
+                            {id: 5, name: "Kir"},
+                            {id: 6, name: "Alex"},
+    ]
+
+        let MessageData = [     
+                                {id: 1, message: "Hello every one!"},
+                                {id: 2, message: "Hi"},
+                                {id: 3, message: "Nice to meet you!"},
+                                {id: 4, message: "Thank you very mutch!"},
+    ]
+
 
 
 const Dialogs = (props) => {
     return(
         <div className={style.dialogs}>
             <div className={style.dialogsItems}>
-                    <DialogItem id="1"  name="Eva"/>
-                    <DialogItem id="2"  name="Olga"/>
-                    <DialogItem id="3"  name="Nick"/>
-                    <DialogItem id="4"  name="Petr"/>
-                    <DialogItem id="5"  name="Kir"/>
-                    <DialogItem id="6"  name="Alex"/>
+                    <DialogItem id={DialogsData[0].id}  name={DialogsData[0].name}/>
+                    <DialogItem id={DialogsData[1].id}  name={DialogsData[1].name}/>
+                    <DialogItem id={DialogsData[2].id}  name={DialogsData[2].name}/>
+                    <DialogItem id={DialogsData[3].id}  name={DialogsData[3].name}/>
+                    <DialogItem id={DialogsData[4].id}  name={DialogsData[4].name}/>
+                    <DialogItem id={DialogsData[5].id}  name={DialogsData[5].name}/>
             </div>
             <div className={style.messages}>
-                <Message message="Hello every one!" />
-                <Message message="Hi!" />
-                <Message message="Nice to meet you!" />
-                <Message message="Thank you very mutch!" />
+                <Message message={MessageData[0].message} />
+                <Message message={MessageData[1].message} />
+                <Message message={MessageData[2].message} />
+                <Message message={MessageData[3].message} />
             </div>
         </div>
     )
