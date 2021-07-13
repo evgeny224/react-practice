@@ -1,8 +1,9 @@
-.dialog .active{
-    color: chocolate;
+.person{
+    padding: 10px;
 }
 
-.dialog img {
+
+.item img {
     width: 50px;
     height: 40px;
     border-radius: 50%;

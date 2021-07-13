@@ -5,9 +5,11 @@ import style from "./DialogItem.module.css";
 const DialogItem = (props) => {
     let path = "/dialogs/" + props.id;
 
+
+
     return(
         <div className={style.dialog + ' ' + style.active}>
-            <NavLink to={path}>{props.name}</NavLink>
+            <NavLink to={path}><img src={props.picture} alt="avatarka" />{props.name}</NavLink>
         </div>
     )
 }
