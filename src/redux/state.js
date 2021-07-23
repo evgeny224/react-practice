@@ -1,4 +1,8 @@
-import { rerenderEntireTree } from "../rerender";
+
+
+    let rerenderEntireTree = () => {
+        console.log("State chenged");
+    }
 
 let state = {
     profilePage:{
@@ -69,6 +73,10 @@ let state = {
     export const updateNewMessageText = (newMessage) => {
         state.messagePage.newMessageText = newMessage;
         rerenderEntireTree(state);
+    }
+
+    export const subscribe = (observer) => {
+        rerenderEntireTree = observer;
     }
 
 export default state;
