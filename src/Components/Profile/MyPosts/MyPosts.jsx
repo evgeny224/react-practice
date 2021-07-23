@@ -10,8 +10,12 @@ const MyPosts = (props) => {
     let AddingPost = React.createRef();
 
     const addPost = () => {
+        props.addPost();
+    }
+
+    const onPostCange = () => {
         let text = AddingPost.current.value;
-        alert(text);
+        props.updateNewPostText(text);
     }
     
     return (
@@ -19,7 +23,7 @@ const MyPosts = (props) => {
         <div className={style.postsBlock}>
             <h3>My posts</h3>
             <div>
-                <textarea ref={AddingPost} ></textarea>
+                <textarea onChange={onPostCange} ref={AddingPost} value={props.newPostText} ></textarea>
             </div>
             <div className={style.button}>
                 <button onClick={addPost}>Добавить пост</button>

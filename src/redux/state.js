@@ -1,4 +1,4 @@
-
+import { rerenderEntireTree } from "../rerender";
 
 let state = {
     profilePage:{
@@ -8,7 +8,8 @@ let state = {
         {id: 3, message:"I am glad to see you.", likes: 2},
         {id: 4, message:"Me too!", likes: 5},
         {id: 5, message:"How knows that man?", likes: 6},
-    ]},
+    ],
+    newPostText: "My-Information",},
     messagePage:{
         DialogsData: [ 
             {id: 1, name: "Eva", picture: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT24XtoREBBzSPEUzf0f4xVi6YnKS6yA0-rhKHbiAE-_oIAMzNSmrVPwuzN1d0ajPDaXj4&usqp=CAU"},
@@ -23,7 +24,8 @@ let state = {
             {id: 2, message: "Hi!"},
             {id: 3, message: "Nice to meet you!"},
             {id: 4, message: "Thank you very mutch!"},
-        ]
+        ],
+        newMessageText: "Message Text",
     },
     sidebarPage:{
         FriendsData:[
@@ -33,5 +35,40 @@ let state = {
         ]
     }
 }
+
+    window.state = state;
+
+    export const addPost = () =>{
+
+        let newPost = {
+            id:6,
+            message: state.profilePage.newPostText,
+            likes: 0,
+        };
+        state.profilePage.postsData.push(newPost);
+        state.profilePage.newPostText = "";
+        rerenderEntireTree(state);
+    }
+
+    export const updateNewPostText = (newText) =>{
+        state.profilePage.newPostText = newText;
+        rerenderEntireTree(state);
+    }
+
+    export const addMessage = () => {
+        
+        let newMessage = {
+            id:5,
+            message: state.messagePage.newMessageText,
+        };
+        state.messagePage.MessageData.push(newMessage);
+        state.messagePage.newMessageText = "";
+        rerenderEntireTree(state);
+    }
+
+    export const updateNewMessageText = (newMessage) => {
+        state.messagePage.newMessageText = newMessage;
+        rerenderEntireTree(state);
+    }
 
 export default state;
