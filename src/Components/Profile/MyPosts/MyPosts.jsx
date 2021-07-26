@@ -10,12 +10,13 @@ const MyPosts = (props) => {
     let AddingPost = React.createRef();
 
     const addPost = () => {
-        props.addPost();
+        props.dispatch({ type:"ADD-TEXT" });
     }
 
     const onPostCange = () => {
         let text = AddingPost.current.value;
-        props.updateNewPostText(text);
+        let action = { type:"UPADATE-NEWPOSTTEXT", newText: text };
+        props.dispatch(action);
     }
     
     return (
