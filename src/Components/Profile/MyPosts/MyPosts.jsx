@@ -1,8 +1,10 @@
 import React from "react";
 import Post from "./Post/Post";
-import style from "./MyPosts.module.css"
+import style from "./MyPosts.module.css";
+import { addPostActionCreator, onPostCangeActionCreator } from "../../../redux/profile-reducer";
 
 const MyPosts = (props) => {
+
 
 
     let PostsElements = props.postsData.map( element => <Post message={element.message} likes={element.likes} />)
@@ -10,13 +12,12 @@ const MyPosts = (props) => {
     let AddingPost = React.createRef();
 
     const addPost = () => {
-        props.dispatch({ type:"ADD-TEXT" });
+        props.dispatch(addPostActionCreator());
     }
 
     const onPostCange = () => {
         let text = AddingPost.current.value;
-        let action = { type:"UPADATE-NEWPOSTTEXT", newText: text };
-        props.dispatch(action);
+        props.dispatch(onPostCangeActionCreator(text));
     }
     
     return (
