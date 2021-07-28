@@ -2,7 +2,6 @@ import React from "react";
 import style from "./Dialogs.module.css";
 import DialogItem from "./DialogItem/DialogItem";
 import Message from "./Message/Message";
-import { addMessageActionCreator, onMessageChangeActionCreator} from "../../redux/message-reducer";
 
 
     
@@ -16,15 +15,15 @@ const Dialogs = (props) => {
 
     let AddingMessage = React.createRef()
 
-    
-    let addMessage = () => {
-        props.dispatch(addMessageActionCreator());
+    let addMessageText = () => {
+        props.addMessage();
     }
 
-    let onMessageChange = () => {
+    let onMessageChangeText = () => {
         let text = AddingMessage.current.value;
-        props.dispatch(onMessageChangeActionCreator(text));
+        props.onMessageChange(text);
     }
+
 
     return(
 
@@ -36,10 +35,10 @@ const Dialogs = (props) => {
                 {DialogsMessages}
                 <div className={style.addmessage}>
                     <div>
-                        <textarea onChange={onMessageChange} className={style.text} ref={AddingMessage} value={props.state.newMessageText}></textarea>
+                        <textarea onChange={onMessageChangeText} className={style.text} ref={AddingMessage} value={props.state.newMessageText}></textarea>
                     </div>
                     <div>
-                        <button className={style.button} onClick={addMessage}>Добавить сообщение</button>
+                        <button className={style.button} onClick={addMessageText}>Добавить сообщение</button>
                     </div>
                 </div>
             </div>
