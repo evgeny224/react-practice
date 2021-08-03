@@ -4,7 +4,6 @@ import style from "./MyPosts.module.css";
 
 const MyPosts = (props) => {
 
-    debugger;
 
     let PostsElements = props.postsData.map( element => <Post message={element.message} likes={element.likes} />)
 
