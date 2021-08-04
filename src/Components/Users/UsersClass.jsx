@@ -5,25 +5,25 @@ import userPhoto from "../../assets/images/user.jpg"
 
 // Делаем запрос на сервер с помощью axios
 
-    const Users = (props) => {
-
-        if(props.users.length === 0) {
-
-            axios.get("https://social-network.samuraijs.com/api/1.0/users").then(responce =>{
-                debugger;
-                props.setUsers(responce.data.items);
-            });
+class Users extends React.Component {
+    
+    constructor(props){
+        super(props);
+        axios.get("https://social-network.samuraijs.com/api/1.0/users").then(responce =>{
+            this.props.setUsers(responce.data.items);
+        });
     }
-        
+
+    render(){
         return (
             <div>
                 {
-                    props.users.map( users => <div key = {users.id}>
+                    this.props.users.map( users => <div key = {users.id}>
                         <img src={users.photos.small != null ? users.photos.small : userPhoto} alt="avatar" className = {style.userPhoto}/>
                         <div>
                             {users.followed ? 
-                                <button onClick = { () => { props.unfollow(users.id) }}>Unfollow</button> : 
-                                <button onClick = { () => { props.follow(users.id) } }>Follow</button>}
+                                <button onClick = { () => { this.props.unfollow(users.id) }}>Unfollow</button> : 
+                                <button onClick = { () => { this.props.follow(users.id) } }>Follow</button>}
                         </div>
                         <div>{users.name}</div>
                         <div>{users.status}</div>
@@ -34,5 +34,7 @@ import userPhoto from "../../assets/images/user.jpg"
             </div>
         )
     }
+}
+
 
     export default Users;
