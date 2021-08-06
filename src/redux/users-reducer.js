@@ -3,6 +3,7 @@ const UNFOLLOW = "UNFOLLOW";
 const SET_USERS = "SET_USERS";
 const SET_CURRENT_PAGE = "SET_CURRENT_PAGE";
 const SET_TOTAL_USER_COUNT = "SET_TOTAL_USER_COUNT";
+const TOGGLE_IS_FETCHING = "TOOGLE_IS_FETCHING";
 
 //State содержит пустой массив в который мы добавляем в себя данные которые приходят с сервера
 // 
@@ -11,7 +12,8 @@ let initialState = {
     users: [ ],
     pageSize: 10,
     totalUsersCount: 0,
-    currentPage: 3,
+    currentPage: 1,
+    isFetching: true,
 }
 
 const usersReducer = (state = initialState, action) => {
@@ -48,6 +50,10 @@ const usersReducer = (state = initialState, action) => {
                 return {
                     ...state, totalUsersCount: action.count
                 }
+            case TOGGLE_IS_FETCHING:
+                return {
+                    ...state, isFetching: action.isFetching
+                }
             default:
             return state;
         }
@@ -55,14 +61,16 @@ const usersReducer = (state = initialState, action) => {
 
 }
 
-export const followAC = (userId) => ({ type: FOLLOW, userId });
+export const follow = (userId) => ({ type: FOLLOW, userId });
 
-export const unfollowAC = (userId) =>   ({ type: UNFOLLOW, userId });
+export const unfollow = (userId) =>   ({ type: UNFOLLOW, userId });
 
-export const setUsersAC = (users) => ({ type: SET_USERS,  users});
+export const setUsers = (users) => ({ type: SET_USERS,  users});
 
-export const setCurrentPageAC = (currentPage) => ({ type: SET_CURRENT_PAGE,  currentPage});
+export const setCurrentPage = (currentPage) => ({ type: SET_CURRENT_PAGE,  currentPage});
 
-export const setTotalUsersCountAC = (totalUsersCount) => ({ type: SET_TOTAL_USER_COUNT,  count: totalUsersCount});
+export const setTotalUsersCount = (totalUsersCount) => ({ type: SET_TOTAL_USER_COUNT,  count: totalUsersCount});
+
+export const toggleIsFetching = (isFetching) => ({ type: TOGGLE_IS_FETCHING,  isFetching});
 
 export default usersReducer;
