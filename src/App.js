@@ -3,7 +3,7 @@ import { BrowserRouter, Route } from "react-router-dom";
 import './App.css';
 import Header from "./Components/Header/Header";
 import Navbar from "./Components/Navbar/Navbar";
-import Profile from "./Components/Profile/Profile";
+import ProfileContainer from "./Components/Profile/ProfileContainer";
 import DialogsContainer from "./Components/Dialogs/DialogsContainer";
 import News from "./Components/News/News";
 import Music from "./Components/Music/Music";
@@ -20,7 +20,7 @@ const App = (props) => {
           <Navbar state={props.appState.sidebarPage} />
           <div className="app-wrapper-content">
             <Route path='/dialogs' render={ () => <DialogsContainer /> }/>
-            <Route path='/profile'  render={ () => <Profile /> }/>
+            <Route path='/profile/:userId?'  render={ () => <ProfileContainer /> }/>
             <Route path ='/users' render={ () => <UsersContainer />} />
             <Route path='/news'  render={ () => <News/> }/>
             <Route path='/music'  render={ () => <Music/> }/>

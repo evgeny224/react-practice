@@ -1,5 +1,6 @@
 const ADD_TEXT = "ADD-TEXT";
 const UPADATE_NEW_POST_TEXT = "UPADATE-NEW-POST-TEXT";
+const SET_USER_PROFILE = "SET_USER_PROFILE";
 
 let initialState = {
     postsData: [   
@@ -9,7 +10,8 @@ let initialState = {
         {id: 4, message:"Me too!", likes: 5},
         {id: 5, message:"How knows that man?", likes: 6},
     ],
-    newPostText: "My-Information"
+    newPostText: "My-Information",
+    profile: null,
 }
 
 const profileReducer = (state = initialState, action) => {
@@ -29,6 +31,11 @@ const profileReducer = (state = initialState, action) => {
                 newPostText: action.newText
             };
         }
+        case SET_USER_PROFILE: {
+            return {
+                ...state, profile: action.profile
+            }
+        }
         default: 
             return state;
     }
@@ -37,6 +44,8 @@ const profileReducer = (state = initialState, action) => {
 
 export const addPostActionCreator = () => ({ type: ADD_TEXT });
 
-export const onPostCangeActionCreator = (text) =>   ({ type: UPADATE_NEW_POST_TEXT, newText: text });
+export const onPostCangeActionCreator = (text) => ({ type: UPADATE_NEW_POST_TEXT, newText: text });
+
+export const setUserProfile = (profile) => ({type: SET_USER_PROFILE, profile})
 
 export default profileReducer;

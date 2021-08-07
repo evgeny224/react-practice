@@ -4,7 +4,6 @@ import Friend from "./Friends/Friends";
 
 
 const Sidebar = (props) => {
-    debugger;
 
     let FriendsElement = props.state.FriendsData.map(element => <Friend  id={element.id} image={element.image} name={element.name} key = {element.id}/>)
 
