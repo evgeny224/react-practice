@@ -10,7 +10,6 @@ const MyPosts = (props) => {
     let AddingPost = React.createRef();
 
     const onAddPost = () => {
-        debugger;
         props.addPost();
     }
 
