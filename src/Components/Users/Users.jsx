@@ -2,7 +2,7 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import style from "./Users.module.css";
 import userPhoto from "../../assets/images/user.jpg";
-import { userAPI } from "../../api/api"
+
 
 
 
@@ -33,20 +33,11 @@ for (let i = 1; i <= pageCount; i ++){
             </NavLink>
             <div>
                 {users.followed ? 
-                    <button onClick = { () => { 
-                        userAPI.getUnFollow (users.id).then(response =>{
-                        if(response.data.resultCode === 0){
-                            props.unfollow(users.id)
-                        }
-                        });
-                            }}>Unfollow</button> : 
-                    <button onClick = { () => { 
-                        userAPI.getFollow (users.id).then(response =>{
-                        if(response.data.resultCode === 0){
-                            props.follow(users.id)
-                        }
-                        });
-                            }
+                    <button disabled = {props.followingInProgress.some(id => id === users.id)}
+                        onClick = { () => { props.unfollow(users.id) }
+                            }>Unfollow</button> : 
+                    <button disabled = {props.followingInProgress.some(id => id === users.id)} 
+                        onClick = { () => { props.unfollow(users.id) }
                     }>Follow</button>}
             </div>
             <div>{users.name}</div>
