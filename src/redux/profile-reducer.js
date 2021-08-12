@@ -1,3 +1,5 @@
+import { userAPI } from "../api/api";
+
 const ADD_TEXT = "ADD-TEXT";
 const UPADATE_NEW_POST_TEXT = "UPADATE-NEW-POST-TEXT";
 const SET_USER_PROFILE = "SET_USER_PROFILE";
@@ -46,6 +48,14 @@ export const addPostActionCreator = () => ({ type: ADD_TEXT });
 
 export const onPostCangeActionCreator = (text) => ({ type: UPADATE_NEW_POST_TEXT, newText: text });
 
-export const setUserProfile = (profile) => ({type: SET_USER_PROFILE, profile})
+export const setUserProfile = (profile) => ({type: SET_USER_PROFILE, profile});
+
+//Это thunk-функция
+
+export const getUserProfile = (userId) => (dispatch) => {
+    userAPI.getProfile(userId).then(responce =>{
+        dispatch(setUserProfile(responce.data));
+    })
+};
 
 export default profileReducer;

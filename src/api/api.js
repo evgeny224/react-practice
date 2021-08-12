@@ -18,13 +18,22 @@ import * as axios from "axios";
                 return response.data;
             })
         },
-        getUnFollow (users) {
+        getUnfollow (users) {
             return instance.delete(`follow/${users}`)
         },
         getFollow (users) {
             return instance.post(`follow/${users}`)
         },
+        getProfile (userId) {
+            return instance.get(`profile/` + userId)
+        },
         
     }
 
+    export const authAPI = {
+        me () {
+            return instance.get(`auth/me`)
+        }
+        
+    }
 

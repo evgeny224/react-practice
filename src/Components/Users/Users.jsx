@@ -37,7 +37,7 @@ for (let i = 1; i <= pageCount; i ++){
                         onClick = { () => { props.unfollow(users.id) }
                             }>Unfollow</button> : 
                     <button disabled = {props.followingInProgress.some(id => id === users.id)} 
-                        onClick = { () => { props.unfollow(users.id) }
+                        onClick = { () => { props.follow(users.id) }
                     }>Follow</button>}
             </div>
             <div>{users.name}</div>
