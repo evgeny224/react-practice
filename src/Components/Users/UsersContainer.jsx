@@ -1,8 +1,10 @@
 import React from "react";
 import { connect } from "react-redux";
 import { follow, unfollow, setCurrentPage,  toggleFollowingProgress, getUsers } from "../../redux/users-reducer";
+import { withAuthRedirect } from "../../hoc/withAuthRedirect";
 import Users from "./Users";
 import Preloader from "../Common/Preloader/Preloader";
+import { compose } from "redux";
 
 class UsersContainer extends React.Component {
     
@@ -54,8 +56,10 @@ render(){
         }
     }
 
+    //Функция compose соеденяет все обработчики вместе
 
-// Вместо mapDispatchToProps создаем прямые ссылки 
-
-    export default connect (mapStateToProps, 
-        { follow, unfollow, setCurrentPage, toggleFollowingProgress, getUsers})(UsersContainer);
+export default compose(
+    withAuthRedirect,
+    connect (mapStateToProps, 
+        { follow, unfollow, setCurrentPage, toggleFollowingProgress, getUsers})
+)(UsersContainer)

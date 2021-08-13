@@ -1,6 +1,8 @@
 import { addMessageActionCreator, onMessageChangeActionCreator} from "../../redux/message-reducer";
 import Dialogs from "./Dialogs";
 import { connect } from "react-redux";
+import { withAuthRedirect } from "../../hoc/withAuthRedirect";
+import { compose } from "redux";
 
 
     
@@ -8,7 +10,6 @@ import { connect } from "react-redux";
     let mapStateToProps = (state) => {
         return {
             state: state.messagePage,
-            isAuth: state.auth.isAuth,
         }
     }
 
@@ -24,6 +25,9 @@ import { connect } from "react-redux";
         }
     }
 
-    let DialogsContainer = connect (mapStateToProps, mapDispatchToProps) (Dialogs);
+    //Функция compose соеденяет все обработчики вместе
 
-export default DialogsContainer;
+export default compose(
+    connect (mapStateToProps, mapDispatchToProps),
+    withAuthRedirect
+)(Dialogs);

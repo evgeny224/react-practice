@@ -24,7 +24,7 @@ const Dialogs = (props) => {
         let text = AddingMessage.current.value;
         props.onMessageChange(text);
     }
-
+//Редеректим если пользователь не залогинен
     if(!props.isAuth) return <Redirect to = {'/login'} />;
 
     return(
