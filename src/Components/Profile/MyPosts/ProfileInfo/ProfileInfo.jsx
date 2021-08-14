@@ -1,7 +1,8 @@
 import React from "react";
 import style from "./ProfileInfo.module.css";
-import sand from "../../../../images/sand.jpg";
+// import sand from "../../../../images/sand.jpg";
 import Preloader from "../../../Common/Preloader/Preloader";
+import ProfileStatus from "./ProfileStatus";
 
 
 
@@ -13,15 +14,15 @@ const ProfileInfo = (props) => {
     
     return(
         <div className={style.content}>
-            <div>
+            {/* <div>
                 <img src={sand} alt="island" />
-            </div>
+            </div> */}
             <div className={style.description}>
                 <div>
                     <img  src = { props.profile.photos.large } alt=""/>
                 </div>
                 <div>
-                    {props.profile.fullName}
+                    <ProfileStatus status = {"Hello my friend!"}/>
                 </div>
             </div>
         </div>
